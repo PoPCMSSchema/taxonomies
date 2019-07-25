@@ -1,8 +1,8 @@
 <?php
-namespace PoP\Taxonomies\Hooks\Posts;
+namespace PoP\Taxonomies\Hooks\RESTFields;
 use PoP\Hooks\Facades\HooksAPIFacade;
 
-class RESTFieldsHooks
+class PostHooks
 {
     const TAG_RESTFIELDS = 'tags.id|name|url';
 
