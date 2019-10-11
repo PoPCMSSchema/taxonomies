@@ -3,7 +3,7 @@ namespace PoP\Taxonomies;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;
-use PoP\Root\Container\ContainerBuilderUtils;
+use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 /**
  * Initialize component
