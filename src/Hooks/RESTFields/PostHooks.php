@@ -1,13 +1,15 @@
 <?php
 namespace PoP\Taxonomies\Hooks\RESTFields;
-use PoP\Hooks\Facades\HooksAPIFacade;
 
-class PostHooks
+use PoP\Engine\Hooks\AbstractHookSet;
+
+class PostHooks extends AbstractHookSet
 {
     const TAG_RESTFIELDS = 'tags.id|name|url';
 
-    public function __construct() {
-        HooksAPIFacade::getInstance()->addFilter(
+    protected function init()
+    {
+        $this->hooksAPI->addFilter(
             'Posts:RESTFields',
             [$this, 'getRESTFields']
         );
