@@ -10,3 +10,7 @@ services:
     PoP\Taxonomies\Hooks\:
         resource: '../src/Hooks/*'
         public: true
+
+    PoP\Taxonomies\RouteModuleProcessors\:
+        resource: '../src/RouteModuleProcessors/*'
+        public: true
