@@ -3,6 +3,7 @@ namespace PoP\Taxonomies;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;
+use PoP\Taxonomies\Config\ServiceConfiguration;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 /**
@@ -20,6 +21,7 @@ class Component extends AbstractComponent
     {
         parent::init();
         self::initYAMLServices(dirname(__DIR__));
+        ServiceConfiguration::init();
     }
 
     /**
