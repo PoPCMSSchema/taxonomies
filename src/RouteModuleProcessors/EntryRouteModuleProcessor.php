@@ -45,14 +45,14 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
             // Tag
             $ret[TaxonomyRouteNatures::TAG][] = [
-                'module' => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAG_FIELDS],
+                'module' => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAG_FIELDS],
                 'conditions' => [
                     'scheme' => POP_SCHEME_API,
                 ],
             ];
             // REST API Tag
             $ret[TaxonomyRouteNatures::TAG][] = [
-                'module' => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAG_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+                'module' => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAG_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
                 'conditions' => [
                     'scheme' => POP_SCHEME_API,
                     'datastructure' => GD_DATALOAD_DATASTRUCTURE_REST,
@@ -74,7 +74,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
             // Page
             $routemodules = array(
-                POP_TAXONOMIES_ROUTE_TAGS => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS],
+                POP_TAXONOMIES_ROUTE_TAGS => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS],
             );
             foreach ($routemodules as $route => $module) {
                 $ret[RouteNatures::STANDARD][$route][] = [
@@ -87,7 +87,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
             // REST API Page
             $routemodules = array(
-                POP_TAXONOMIES_ROUTE_TAGS => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+                POP_TAXONOMIES_ROUTE_TAGS => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
             );
             foreach ($routemodules as $route => $module) {
                 $ret[RouteNatures::STANDARD][$route][] = [
@@ -101,7 +101,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
             // Tag Posts
             $routemodules = array(
-                POP_POSTS_ROUTE_POSTS => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGPOSTLIST_FIELDS],
+                POP_POSTS_ROUTE_POSTS => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGPOSTLIST_FIELDS],
             );
             foreach ($routemodules as $route => $module) {
                 $ret[TaxonomyRouteNatures::TAG][$route][] = [
@@ -114,7 +114,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
             // Tag posts for REST
             $routemodules = array(
-                POP_POSTS_ROUTE_POSTS => [PoP_Taxonomies_Module_Processor_FieldDataloads::class, PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGPOSTLIST_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : PoP_Posts_Module_EntryRouteModuleProcessor::getRESTFields()]],
+                POP_POSTS_ROUTE_POSTS => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGPOSTLIST_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : \PoP\Posts\RouteModuleProcessors\EntryRouteModuleProcessor::getRESTFields()]],
             );
             foreach ($routemodules as $route => $module) {
                 $ret[TaxonomyRouteNatures::TAG][$route][] = [
