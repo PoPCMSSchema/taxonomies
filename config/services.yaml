@@ -11,6 +11,10 @@ services:
         resource: '../src/Hooks/*'
         public: true
 
-    PoP\Taxonomies\RouteModuleProcessors\:
-        resource: '../src/RouteModuleProcessors/*'
+    PoP\Taxonomies\Conditional\API\RouteModuleProcessors\:
+        resource: '../src/Conditional/API/RouteModuleProcessors/*'
+        public: true
+
+    PoP\Taxonomies\Conditional\RESTAPI\RouteModuleProcessors\:
+        resource: '../src/Conditional/RESTAPI/RouteModuleProcessors/*'
         public: true
