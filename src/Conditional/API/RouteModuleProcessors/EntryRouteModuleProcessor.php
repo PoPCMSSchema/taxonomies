@@ -3,7 +3,7 @@ namespace PoP\Taxonomies\Conditional\API\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\Routing\RouteNatures;
-use PoP\Taxonomies\Routing\RouteNatures as PostRouteNatures;
+use PoP\Taxonomies\Routing\RouteNatures as TaxonomyRouteNatures;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
