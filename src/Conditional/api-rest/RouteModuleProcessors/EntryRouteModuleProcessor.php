@@ -1,5 +1,5 @@
 <?php
-namespace PoP\Taxonomies\Conditional\api-rest\RouteModuleProcessors;
+namespace PoP\Taxonomies\Conditional\RESTAPI\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\ComponentModel\Engine_Vars;
