@@ -7,6 +7,7 @@ use PoP\Hooks\Facades\HooksAPIFacade;
 use PoP\API\Facades\FieldQueryConvertorFacade;
 use PoP\Routing\RouteNatures;
 use PoP\Taxonomies\Routing\RouteNatures as TaxonomyRouteNatures;
+use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
@@ -42,7 +43,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
             'module' => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAG_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
             'conditions' => [
                 'scheme' => POP_SCHEME_API,
-                'datastructure' => GD_DATALOAD_DATASTRUCTURE_REST,
+                'datastructure' => RESTDataStructureFormatter::getName(),
             ],
         ];
 
@@ -61,7 +62,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
                 'module' => $module,
                 'conditions' => [
                     'scheme' => POP_SCHEME_API,
-                    'datastructure' => GD_DATALOAD_DATASTRUCTURE_REST,
+                    'datastructure' => RESTDataStructureFormatter::getName(),
                 ],
             ];
         }
@@ -73,7 +74,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
                 'module' => $module,
                 'conditions' => [
                     'scheme' => POP_SCHEME_API,
-                    'datastructure' => GD_DATALOAD_DATASTRUCTURE_REST,
+                    'datastructure' => RESTDataStructureFormatter::getName(),
                 ],
             ];
         }
