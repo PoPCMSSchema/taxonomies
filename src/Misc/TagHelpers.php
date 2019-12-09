@@ -36,7 +36,7 @@ class TagHelpers
     public static function getTagNameDescription($tag)
     {
         $cmstaxonomiesresolver = \PoP\Taxonomies\ObjectPropertyResolverFactory::getInstance();
-        $cmstaxonomiesresolver->getTagName($tag);
+        $value = $cmstaxonomiesresolver->getTagName($tag);
 
         // If there's a description, then use it
         if ($description = $cmstaxonomiesresolver->getTagDescription($tag)) {
