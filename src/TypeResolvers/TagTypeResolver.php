@@ -6,7 +6,7 @@ use PoP\Taxonomies\TypeDataResolvers\TagTypeDataResolver;
 
 class TagTypeResolver extends AbstractTypeResolver
 {
-    public const NAME = 'tags';
+    public const NAME = 'Tag';
 
     public function getTypeName(): string
     {
