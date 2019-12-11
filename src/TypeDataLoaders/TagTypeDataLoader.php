@@ -16,7 +16,7 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataResolver
         return [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS];
     }
 
-    public function resolveObjectsFromIDs(array $ids): array
+    public function getObjects(array $ids): array
     {
         $query = array(
             'include' => $ids
