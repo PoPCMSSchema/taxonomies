@@ -20,7 +20,7 @@ class TagTypeResolver extends AbstractTypeResolver
         return $cmstaxonomiesresolver->getTagTermId($tag);
     }
 
-    public function getIdFieldTypeDataResolverClass(): string
+    public function getTypeDataResolverClass(): string
     {
         return TagTypeDataResolver::class;
     }

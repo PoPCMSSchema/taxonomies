@@ -3,18 +3,12 @@ namespace PoP\Taxonomies\TypeDataResolvers;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
-use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 
 class TagTypeDataResolver extends AbstractTypeQueryableDataResolver
 {
     public function getDataquery()
     {
         return GD_DATAQUERY_TAG;
-    }
-
-    public function getTypeResolverClass(): string
-    {
-        return TagTypeResolver::class;
     }
 
     public function getFilterDataloadingModule(): ?array
