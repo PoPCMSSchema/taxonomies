@@ -1,10 +1,10 @@
 <?php
-namespace PoP\Taxonomies\TypeDataResolvers;
+namespace PoP\Taxonomies\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
+use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataResolver;
 
-class TagTypeDataResolver extends AbstractTypeQueryableDataResolver
+class TagTypeDataLoader extends AbstractTypeQueryableDataResolver
 {
     public function getDataquery()
     {

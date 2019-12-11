@@ -2,7 +2,7 @@
 namespace PoP\Taxonomies\TypeResolvers;
 
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
-use PoP\Taxonomies\TypeDataResolvers\TagTypeDataResolver;
+use PoP\Taxonomies\TypeDataLoaders\TagTypeDataLoader;
 
 class TagTypeResolver extends AbstractTypeResolver
 {
@@ -20,9 +20,9 @@ class TagTypeResolver extends AbstractTypeResolver
         return $cmstaxonomiesresolver->getTagTermId($tag);
     }
 
-    public function getTypeDataResolverClass(): string
+    public function getTypeDataLoaderClass(): string
     {
-        return TagTypeDataResolver::class;
+        return TagTypeDataLoader::class;
     }
 }
 
