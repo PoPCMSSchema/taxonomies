@@ -6,11 +6,11 @@ use PoP\Taxonomies\TypeDataResolvers\TagTypeDataResolver;
 
 class TagTypeResolver extends AbstractTypeResolver
 {
-    public const TYPE_COLLECTION_NAME = 'tags';
+    public const NAME = 'tags';
 
-    public function getTypeCollectionName(): string
+    public function getTypeName(): string
     {
-        return self::TYPE_COLLECTION_NAME;
+        return self::NAME;
     }
 
     public function getId($resultItem)
