@@ -20,8 +20,8 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'tag' => $translationAPI->__('ID of the tag', 'pop-taxonomies'),
-			'tags' => $translationAPI->__('IDs of the tags in the current site', 'pop-taxonomies'),
+			'tag' => $translationAPI->__('Tag with a specific ID', 'pop-taxonomies'),
+			'tags' => $translationAPI->__('Tags in the current site', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

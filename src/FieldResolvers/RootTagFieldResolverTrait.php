@@ -30,7 +30,7 @@ trait RootTagFieldResolverTrait
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'tag' => $translationAPI->__('ID of the tag', 'pop-taxonomies'),
+			'tag' => $translationAPI->__('Tag with a specific ID', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

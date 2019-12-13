@@ -43,8 +43,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'cats' => $translationAPI->__('IDs of the categories to which this post was added', 'pop-taxonomies'),
-            'cat' => $translationAPI->__('ID of the main category to which this post was added', 'pop-taxonomies'),
+			'cats' => $translationAPI->__('Categories to which this post was added', 'pop-taxonomies'),
+            'cat' => $translationAPI->__('Main category to which this post was added', 'pop-taxonomies'),
             'cat-name' => $translationAPI->__('Name of the main category to which this post was added', 'pop-taxonomies'),
             'cat-slugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-taxonomies'),
             'tag-names' => $translationAPI->__('Names of the tags added to this post', 'pop-taxonomies'),

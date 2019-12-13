@@ -35,7 +35,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'tags' => $translationAPI->__('IDs of the tags added to this post', 'pop-taxonomies'),
+            'tags' => $translationAPI->__('Tags added to this post', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
