@@ -30,11 +30,11 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'cats' => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_ID),
+			'cats' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
             'cat' => SchemaDefinition::TYPE_ID,
             'cat-name' => SchemaDefinition::TYPE_STRING,
-            'cat-slugs' => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_STRING),
-            'tag-names' => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_STRING),
+            'cat-slugs' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
+            'tag-names' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
