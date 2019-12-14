@@ -2,9 +2,9 @@
 namespace PoP\Taxonomies\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataResolver;
+use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 
-class TagTypeDataLoader extends AbstractTypeQueryableDataResolver
+class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
     public function getDataquery()
     {
