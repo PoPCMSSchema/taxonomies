@@ -69,7 +69,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $taxonomyapi->getPostTags(
-                    $typeResolver->getId($post),
+                    $typeResolver->getID($post),
                     $options
                 );
         }

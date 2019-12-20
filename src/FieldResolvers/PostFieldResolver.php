@@ -58,7 +58,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         $post = $resultItem;
         switch ($fieldName) {
             case 'cats':
-                return $taxonomyapi->getPostCategories($typeResolver->getId($post), ['return-type' => POP_RETURNTYPE_IDS]);
+                return $taxonomyapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
 
             case 'cat':
                 // Simply return the first category
@@ -74,10 +74,10 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
                 return null;
 
             case 'cat-slugs':
-                return $taxonomyapi->getPostCategories($typeResolver->getId($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
+                return $taxonomyapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
 
             case 'tag-names':
-                return $taxonomyapi->getPostTags($typeResolver->getId($post), ['return-type' => POP_RETURNTYPE_NAMES]);
+                return $taxonomyapi->getPostTags($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_NAMES]);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);

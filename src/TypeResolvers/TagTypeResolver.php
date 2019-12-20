@@ -20,7 +20,7 @@ class TagTypeResolver extends AbstractTypeResolver
         return $translationAPI->__('Representation of a tag, added to a post', 'tags');
     }
 
-    public function getId($resultItem)
+    public function getID($resultItem)
     {
         $cmstaxonomiesresolver = \PoP\Taxonomies\ObjectPropertyResolverFactory::getInstance();
         $tag = $resultItem;

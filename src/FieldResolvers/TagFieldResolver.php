@@ -94,7 +94,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
                 return TagHelpers::getTagNameDescription($tag);
 
             case 'url':
-                return $taxonomyapi->getTagLink($typeResolver->getId($tag));
+                return $taxonomyapi->getTagLink($typeResolver->getID($tag));
 
             case 'endpoint':
                 return \PoP\API\APIUtils::getEndpoint($typeResolver->resolveValue($resultItem, 'url', $variables, $expressions, $options));
