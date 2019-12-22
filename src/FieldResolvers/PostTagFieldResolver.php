@@ -18,6 +18,7 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
 			'posts' => $translationAPI->__('Posts which contain this tag', 'pop-taxonomies'),
+			'content' => $translationAPI->__('Content entries which contain this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -29,7 +30,8 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
         $tag = $resultItem;
         switch ($fieldName) {
             case 'posts':
-                $query['tag-ids'] = [$typeResolver->getId($tag)];
+            case 'content':
+                $query['tag-ids'] = [$typeResolver->getID($tag)];
                 break;
         }
 
