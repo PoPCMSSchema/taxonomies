@@ -2,18 +2,20 @@
 namespace PoP\Taxonomies\FieldResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
-use PoP\Posts\TypeResolvers\PostTypeResolver;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
+use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\Content\FieldInterfaces\ContentEntityFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
-use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 
 class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
-        return array(PostTypeResolver::class);
+        return [
+            ContentEntityFieldInterfaceResolver::class,
+        ];
     }
 
     public static function getFieldNamesToResolve(): array
