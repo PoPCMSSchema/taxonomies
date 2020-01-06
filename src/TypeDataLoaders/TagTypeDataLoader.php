@@ -6,11 +6,6 @@ use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 
 class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
-    public function getDataquery()
-    {
-        return GD_DATAQUERY_TAG;
-    }
-
     public function getFilterDataloadingModule(): ?array
     {
         return [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS];
