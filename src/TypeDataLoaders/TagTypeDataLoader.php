@@ -8,7 +8,7 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
     public function getFilterDataloadingModule(): ?array
     {
-        return [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_TAGLIST_FIELDS];
+        return [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGLIST];
     }
 
     public function getObjects(array $ids): array
