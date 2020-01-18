@@ -22,9 +22,9 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         return [
             'cats',
             'cat',
-            'cat-name',
-            'cat-slugs',
-            'tag-names',
+            'catName',
+            'catSlugs',
+            'tagNames',
         ];
     }
 
@@ -34,9 +34,9 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         $types = [
         'cats' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID/*SchemaDefinition::TYPE_UNRESOLVED_ID*/),
             'cat' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
-            'cat-name' => SchemaDefinition::TYPE_STRING,
-            'cat-slugs' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
-            'tag-names' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
+            'catName' => SchemaDefinition::TYPE_STRING,
+            'catSlugs' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
+            'tagNames' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -47,9 +47,9 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         $descriptions = [
 			'cats' => $translationAPI->__('Categories to which this post was added', 'pop-taxonomies'),
             'cat' => $translationAPI->__('Main category to which this post was added', 'pop-taxonomies'),
-            'cat-name' => $translationAPI->__('Name of the main category to which this post was added', 'pop-taxonomies'),
-            'cat-slugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-taxonomies'),
-            'tag-names' => $translationAPI->__('Names of the tags added to this post', 'pop-taxonomies'),
+            'catName' => $translationAPI->__('Name of the main category to which this post was added', 'pop-taxonomies'),
+            'catSlugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-taxonomies'),
+            'tagNames' => $translationAPI->__('Names of the tags added to this post', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -69,16 +69,16 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
                 }
                 return null;
 
-            case 'cat-name':
+            case 'catName':
                 if ($cat = $typeResolver->resolveValue($post, 'cat', $variables, $expressions, $options)) {
                     return $taxonomyapi->getCategoryName($cat);
                 }
                 return null;
 
-            case 'cat-slugs':
+            case 'catSlugs':
                 return $taxonomyapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
 
-            case 'tag-names':
+            case 'tagNames':
                 return $taxonomyapi->getPostTags($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_NAMES]);
         }
 
