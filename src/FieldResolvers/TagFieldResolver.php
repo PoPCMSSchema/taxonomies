@@ -37,7 +37,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
 
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
-        // TODO: After implementing the resolver for taxonomy, term_group and term_taxonomy change the type to ID. In the meantime, simply use MIXED
+        // TODO: After implementing the resolver for taxonomy, term_group and term_taxonomy change the type to ID
         $types = [
 			'symbol' => SchemaDefinition::TYPE_STRING,
             'symbolnamedescription' => SchemaDefinition::TYPE_STRING,
@@ -47,9 +47,9 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
             'symbolname' => SchemaDefinition::TYPE_STRING,
             'name' => SchemaDefinition::TYPE_STRING,
             'slug' => SchemaDefinition::TYPE_STRING,
-            'term_group' => SchemaDefinition::TYPE_MIXED/*SchemaDefinition::TYPE_ID*/,
-            'term_taxonomy_id' => SchemaDefinition::TYPE_MIXED/*SchemaDefinition::TYPE_ID*/,
-            'taxonomy' => SchemaDefinition::TYPE_MIXED/*SchemaDefinition::TYPE_ID*/,
+            'term_group' => SchemaDefinition::TYPE_UNRESOLVED_ID,
+            'term_taxonomy_id' => SchemaDefinition::TYPE_UNRESOLVED_ID,
+            'taxonomy' => SchemaDefinition::TYPE_UNRESOLVED_ID,
             'description' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
             'count' => SchemaDefinition::TYPE_INT,
