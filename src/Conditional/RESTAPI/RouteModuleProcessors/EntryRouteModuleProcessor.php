@@ -2,7 +2,7 @@
 namespace PoP\Taxonomies\Conditional\RESTAPI\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
-use PoP\ComponentModel\Engine_Vars;
+use PoP\ComponentModel\State\ApplicationState;
 use PoP\Hooks\Facades\HooksAPIFacade;
 use PoP\API\Facades\FieldQueryConvertorFacade;
 use PoP\Routing\RouteNatures;
@@ -38,7 +38,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     public function getModulesVarsPropertiesByNature()
     {
         $ret = array();
-        $vars = Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
         $ret[TaxonomyRouteNatures::TAG][] = [
             'module' => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAG, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
             'conditions' => [
@@ -53,7 +53,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     public function getModulesVarsPropertiesByNatureAndRoute()
     {
         $ret = array();
-        $vars = Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
         $routemodules = array(
             POP_TAXONOMIES_ROUTE_TAGS => [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGLIST, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
         );
