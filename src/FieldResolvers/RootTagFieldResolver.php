@@ -1,7 +1,7 @@
 <?php
 namespace PoP\Taxonomies\FieldResolvers;
 
-use PoP\API\TypeResolvers\RootTypeResolver;
+use PoP\Engine\TypeResolvers\RootTypeResolver;
 use PoP\Taxonomies\FieldResolvers\AbstractTagFieldResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
