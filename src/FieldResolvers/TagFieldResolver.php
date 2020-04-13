@@ -39,7 +39,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         // TODO: After implementing the resolver for taxonomy, term_group and term_taxonomy change the type to ID
         $types = [
-			'symbol' => SchemaDefinition::TYPE_STRING,
+            'symbol' => SchemaDefinition::TYPE_STRING,
             'symbolnamedescription' => SchemaDefinition::TYPE_STRING,
             'namedescription' => SchemaDefinition::TYPE_STRING,
             'url' => SchemaDefinition::TYPE_URL,
@@ -61,7 +61,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'symbol' => $translationAPI->__('Tag symbol', 'pop-taxonomies'),
+            'symbol' => $translationAPI->__('Tag symbol', 'pop-taxonomies'),
             'symbolnamedescription' => $translationAPI->__('Tag symbol and description', 'pop-taxonomies'),
             'namedescription' => $translationAPI->__('Tag and description', 'pop-taxonomies'),
             'url' => $translationAPI->__('Tag URL', 'pop-taxonomies'),

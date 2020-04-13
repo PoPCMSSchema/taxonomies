@@ -17,13 +17,14 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'posts' => $translationAPI->__('Posts which contain this tag', 'pop-taxonomies'),
-			'content' => $translationAPI->__('Content entries which contain this tag', 'pop-taxonomies'),
+            'posts' => $translationAPI->__('Posts which contain this tag', 'pop-taxonomies'),
+            'content' => $translationAPI->__('Content entries which contain this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
 
-    protected function getQuery(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = []): array {
+    protected function getQuery(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = []): array
+    {
 
         $query = parent::getQuery($typeResolver, $resultItem, $fieldName, $fieldArgs);
 

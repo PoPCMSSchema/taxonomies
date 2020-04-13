@@ -32,4 +32,3 @@ class TagTypeResolver extends AbstractTypeResolver
         return TagTypeDataLoader::class;
     }
 }
-

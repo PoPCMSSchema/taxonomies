@@ -12,14 +12,14 @@ abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
     public static function getFieldNamesToResolve(): array
     {
         return [
-			'tags',
+            'tags',
         ];
     }
 
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'tags' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'tags' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
