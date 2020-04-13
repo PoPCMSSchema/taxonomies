@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Taxonomies\Hooks\RESTFields;
 
 use PoP\Engine\Hooks\AbstractHookSet;

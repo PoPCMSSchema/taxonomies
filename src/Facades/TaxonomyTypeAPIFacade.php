@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Taxonomies\Facades;
 
 use PoP\Taxonomies\TypeAPIs\TaxonomyTypeAPIInterface;
