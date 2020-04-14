@@ -20,7 +20,7 @@
     "require": {
         "php" : "~7.1",
         "getpop/posts": "~0.1",
-        "getpop/migrate-taxonomies": "dev-master"
+        "getpop/migrate-taxonomies": "~0.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12",
