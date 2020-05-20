@@ -1,2 +1,2 @@
 <?php
-\PoP\Taxonomies\Component::init();
+//\PoP\Taxonomies\Component::initialize();
