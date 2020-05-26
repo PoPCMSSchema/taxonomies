@@ -25,7 +25,9 @@ composer require getpop/taxonomies
 Initialize the component:
 
 ``` php
-\PoP\Taxonomies\Component::initialize();
+\PoP\Root\ComponentLoader::initializeComponents([
+    \PoP\Taxonomies\Component::class,
+]);
 ```
 
 ## Standards
