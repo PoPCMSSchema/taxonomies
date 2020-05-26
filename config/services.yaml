@@ -11,14 +11,6 @@ services:
         resource: '../src/Hooks/*'
         public: true
 
-    PoP\Taxonomies\FieldResolvers\:
-        resource: '../src/FieldResolvers/*'
-        public: true
-
-    PoP\Taxonomies\TypeResolvers\:
-        resource: '../src/TypeResolvers/*'
-        public: true
-
     PoP\Taxonomies\Conditional\API\RouteModuleProcessors\:
         resource: '../src/Conditional/API/RouteModuleProcessors/*'
         public: true
