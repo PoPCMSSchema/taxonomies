@@ -28,7 +28,6 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
 
     protected function getQuery(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = []): array
     {
-
         $query = parent::getQuery($typeResolver, $resultItem, $fieldName, $fieldArgs);
 
         $tag = $resultItem;
