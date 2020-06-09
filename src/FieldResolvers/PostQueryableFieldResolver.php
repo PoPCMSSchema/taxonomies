@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\Taxonomies\FieldResolvers;
 
+use PoP\Taxonomies\ComponentConfiguration;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
@@ -73,12 +74,16 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
         $post = $resultItem;
         switch ($fieldName) {
             case 'tags':
+                $query = [
+                    'limit' => ComponentConfiguration::getTagListDefaultLimit(),
+                ];
                 $options = [
                     'return-type' => POP_RETURNTYPE_IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $taxonomyapi->getPostTags(
                     $typeResolver->getID($post),
+                    $query,
                     $options
                 );
         }

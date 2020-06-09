@@ -82,7 +82,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
                 return $taxonomyapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
 
             case 'tagNames':
-                return $taxonomyapi->getPostTags($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_NAMES]);
+                return $taxonomyapi->getPostTags($typeResolver->getID($post), [], ['return-type' => POP_RETURNTYPE_NAMES]);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
