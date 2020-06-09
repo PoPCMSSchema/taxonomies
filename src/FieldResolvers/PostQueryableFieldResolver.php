@@ -77,7 +77,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         switch ($fieldName) {
             case 'tagCount':
-                return $this->getFieldDefaultFilterDataloadingModule($typeResolver, 'tags', $fieldArgs);
+                return [\PoP_Taxonomies_Module_Processor_FieldDataloads::class, \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGCOUNT];
         }
         return parent::getFieldDefaultFilterDataloadingModule($typeResolver, $fieldName, $fieldArgs);
     }
