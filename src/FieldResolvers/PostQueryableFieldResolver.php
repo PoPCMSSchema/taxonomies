@@ -54,6 +54,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
         $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
         switch ($fieldName) {
             case 'tags':
+            case 'tagCount':
                 return array_merge(
                     $schemaFieldArgs,
                     $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName)
@@ -66,9 +67,19 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         switch ($fieldName) {
             case 'tags':
+            case 'tagCount':
                 return false;
         }
         return parent::enableOrderedSchemaFieldArgs($typeResolver, $fieldName);
+    }
+
+    protected function getFieldDefaultFilterDataloadingModule(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?array
+    {
+        switch ($fieldName) {
+            case 'tagCount':
+                return $this->getFieldDefaultFilterDataloadingModule($typeResolver, 'tags', $fieldArgs);
+        }
+        return parent::getFieldDefaultFilterDataloadingModule($typeResolver, $fieldName, $fieldArgs);
     }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
@@ -90,9 +101,12 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
                     $options
                 );
             case 'tagCount':
-                // $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
+                $options = [];
+                $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $taxonomyapi->getPostTagCount(
-                    $typeResolver->getID($post)
+                    $typeResolver->getID($post),
+                    [],
+                    $options
                 );
         }
 
