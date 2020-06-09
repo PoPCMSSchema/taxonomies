@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace PoP\Taxonomies\FieldResolvers;
 
+use PoP\Taxonomies\ComponentConfiguration;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
+use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
+use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
-use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
-use PoP\Taxonomies\ComponentConfiguration;
 
 abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -17,6 +18,7 @@ abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
     {
         return [
             'tags',
+            'tagCount',
         ];
     }
 
@@ -24,8 +26,19 @@ abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
     {
         $types = [
             'tags' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'tagCount' => SchemaDefinition::TYPE_INT,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+    }
+
+    public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    {
+        $translationAPI = TranslationAPIFacade::getInstance();
+        $descriptions = [
+            'tags' => $translationAPI->__('Tags', 'pop-taxonomies'),
+            'tagCount' => $translationAPI->__('Number of tags', 'pop-taxonomies'),
+        ];
+        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
 
     public function getSchemaFieldArgs(TypeResolverInterface $typeResolver, string $fieldName): array
@@ -63,6 +76,9 @@ abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmstaxonomiesapi->getTags($query, $options);
+            case 'tagCount':
+                // $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
+                return $cmstaxonomiesapi->getTagCount();
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);

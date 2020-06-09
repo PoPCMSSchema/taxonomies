@@ -26,6 +26,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         return [
             'tags',
+            'tagCount',
         ];
     }
 
@@ -33,6 +34,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         $types = [
             'tags' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'tagCount' => SchemaDefinition::TYPE_INT,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -42,6 +44,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'tags' => $translationAPI->__('Tags added to this post', 'pop-taxonomies'),
+            'tagCount' => $translationAPI->__('Number of tags added to this post', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -85,6 +88,11 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
                     $typeResolver->getID($post),
                     $query,
                     $options
+                );
+            case 'tagCount':
+                // $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
+                return $taxonomyapi->getPostTagCount(
+                    $typeResolver->getID($post)
                 );
         }
 
