@@ -9,6 +9,7 @@ use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
+use PoP\Taxonomies\ComponentConfiguration;
 
 abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -55,7 +56,7 @@ abstract class AbstractTagFieldResolver extends AbstractQueryableFieldResolver
         switch ($fieldName) {
             case 'tags':
                 $query = [
-                    'limit' => -1,
+                    'limit' => ComponentConfiguration::getTagListDefaultLimit(),
                 ];
                 $options = [
                     'return-type' => POP_RETURNTYPE_IDS,
