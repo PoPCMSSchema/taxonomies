@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PoP\Taxonomies\FieldResolvers;
 
+use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Posts\FieldResolvers\AbstractPostFieldResolver;
-use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
+use PoP\Content\FieldResolvers\AbstractContentEntityListFieldResolver;
 
-class PostTagFieldResolver extends AbstractPostFieldResolver
+class ContentEntityListTagFieldResolver extends AbstractContentEntityListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
@@ -20,8 +20,8 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'posts' => $translationAPI->__('Posts which contain this tag', 'pop-taxonomies'),
-            'postCount' => $translationAPI->__('Number of posts which contain this tag', 'pop-taxonomies'),
+            'contentEntities' => $translationAPI->__('Entries considered “content” (eg: posts, events) which contain this tag', 'pop-taxonomies'),
+            'contentEntityCount' => $translationAPI->__('Number of entries considered “content” (eg: posts, events) which contain this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
 
         $tag = $resultItem;
         switch ($fieldName) {
-            case 'posts':
-            case 'postCount':
+            case 'contentEntities':
+            case 'contentEntityCount':
                 $query['tag-ids'] = [$typeResolver->getID($tag)];
                 break;
         }
