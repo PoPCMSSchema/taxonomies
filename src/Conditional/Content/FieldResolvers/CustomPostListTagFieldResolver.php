@@ -20,8 +20,8 @@ class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'contentEntities' => $translationAPI->__('Entries considered “content” (eg: posts, events) which contain this tag', 'pop-taxonomies'),
-            'contentEntityCount' => $translationAPI->__('Number of entries considered “content” (eg: posts, events) which contain this tag', 'pop-taxonomies'),
+            'customPosts' => $translationAPI->__('Custom posts which contain this tag', 'pop-taxonomies'),
+            'customPostCount' => $translationAPI->__('Number of custom posts which contain this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
 
         $tag = $resultItem;
         switch ($fieldName) {
-            case 'contentEntities':
-            case 'contentEntityCount':
+            case 'customPosts':
+            case 'customPostCount':
                 $query['tag-ids'] = [$typeResolver->getID($tag)];
                 break;
         }
