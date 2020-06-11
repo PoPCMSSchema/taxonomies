@@ -7,9 +7,9 @@ namespace PoP\Taxonomies\Conditional\Content\FieldResolvers;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldResolvers\AbstractContentEntityListFieldResolver;
+use PoP\Content\FieldResolvers\AbstractCustomPostListFieldResolver;
 
-class ContentEntityListTagFieldResolver extends AbstractContentEntityListFieldResolver
+class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
