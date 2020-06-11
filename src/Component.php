@@ -60,7 +60,7 @@ class Component extends AbstractComponent
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
 
-        if (!in_array(\PoP\Content\Component::class, $skipSchemaComponentClasses)) {
+        if (!in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)) {
             \PoP\Taxonomies\Conditional\Content\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema

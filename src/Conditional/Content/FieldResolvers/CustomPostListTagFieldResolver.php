@@ -7,7 +7,7 @@ namespace PoP\Taxonomies\Conditional\Content\FieldResolvers;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldResolvers\AbstractCustomPostListFieldResolver;
+use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
 
 class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
 {

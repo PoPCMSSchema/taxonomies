@@ -10,7 +10,7 @@ use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldInterfaces\CustomPostFieldInterfaceResolver;
+use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 
 class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
