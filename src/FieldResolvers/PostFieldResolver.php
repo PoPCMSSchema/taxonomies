@@ -35,13 +35,26 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         // TODO: After implementing the resolver for categories change the type to ID
         $types = [
-        'cats' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID/*SchemaDefinition::TYPE_UNRESOLVED_ID*/),
+            'cats' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID/*SchemaDefinition::TYPE_UNRESOLVED_ID*/),
             'cat' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
             'catName' => SchemaDefinition::TYPE_STRING,
             'catSlugs' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
             'tagNames' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+    }
+
+    public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
+    {
+        $nonNullableFieldNames = [
+            'cats',
+            'catSlugs',
+            'tagNames',
+        ];
+        if (in_array($fieldName, $nonNullableFieldNames)) {
+            return true;
+        }
+        return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
     }
 
     public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string

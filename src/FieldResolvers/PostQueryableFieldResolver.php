@@ -39,6 +39,18 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
 
+    public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
+    {
+        $nonNullableFieldNames = [
+            'tags',
+            'tagCount',
+        ];
+        if (in_array($fieldName, $nonNullableFieldNames)) {
+            return true;
+        }
+        return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
+    }
+
     public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $translationAPI = TranslationAPIFacade::getInstance();
