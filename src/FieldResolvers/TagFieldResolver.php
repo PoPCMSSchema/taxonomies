@@ -9,7 +9,6 @@ use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
-use PoP\Taxonomies\Misc\TagHelpers;
 
 class TagFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -21,12 +20,8 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     public static function getFieldNamesToResolve(): array
     {
         return [
-            'symbol',
-            'symbolnamedescription',
-            'namedescription',
             'url',
             'endpoint',
-            'symbolname',
             'name',
             'slug',
             'term_group',
@@ -42,12 +37,8 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         // TODO: After implementing the resolver for taxonomy, term_group and term_taxonomy change the type to ID
         $types = [
-            'symbol' => SchemaDefinition::TYPE_STRING,
-            'symbolnamedescription' => SchemaDefinition::TYPE_STRING,
-            'namedescription' => SchemaDefinition::TYPE_STRING,
             'url' => SchemaDefinition::TYPE_URL,
             'endpoint' => SchemaDefinition::TYPE_URL,
-            'symbolname' => SchemaDefinition::TYPE_STRING,
             'name' => SchemaDefinition::TYPE_STRING,
             'slug' => SchemaDefinition::TYPE_STRING,
             'term_group' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
@@ -64,12 +55,8 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'symbol' => $translationAPI->__('Tag symbol', 'pop-taxonomies'),
-            'symbolnamedescription' => $translationAPI->__('Tag symbol and description', 'pop-taxonomies'),
-            'namedescription' => $translationAPI->__('Tag and description', 'pop-taxonomies'),
             'url' => $translationAPI->__('Tag URL', 'pop-taxonomies'),
             'endpoint' => $translationAPI->__('Tag endpoint', 'pop-taxonomies'),
-            'symbolname' => $translationAPI->__('Symbol and tag', 'pop-taxonomies'),
             'name' => $translationAPI->__('Tag', 'pop-taxonomies'),
             'slug' => $translationAPI->__('Tag slug', 'pop-taxonomies'),
             'term_group' => $translationAPI->__('TBD', 'pop-taxonomies'),
@@ -88,23 +75,11 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
         $taxonomyapi = \PoP\Taxonomies\FunctionAPIFactory::getInstance();
         $tag = $resultItem;
         switch ($fieldName) {
-            case 'symbol':
-                return TagHelpers::getTagSymbol();
-
-            case 'symbolnamedescription':
-                return TagHelpers::getTagSymbolNameDescription($tag);
-
-            case 'namedescription':
-                return TagHelpers::getTagNameDescription($tag);
-
             case 'url':
                 return $taxonomyapi->getTagLink($typeResolver->getID($tag));
 
             case 'endpoint':
                 return \PoP\API\APIUtils::getEndpoint($typeResolver->resolveValue($resultItem, 'url', $variables, $expressions, $options));
-
-            case 'symbolname':
-                return $cmstaxonomiesresolver->getTagSymbolName($tag);
 
             case 'name':
                 return $cmstaxonomiesresolver->getTagName($tag);
