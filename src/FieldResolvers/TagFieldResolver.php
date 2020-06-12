@@ -24,9 +24,9 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
             'endpoint',
             'name',
             'slug',
-            'term_group',
-            'term_taxonomy_id',
-            'taxonomy',
+            // 'term_group',
+            // 'term_taxonomy_id',
+            // 'taxonomy',
             'description',
             'parent',
             'count',
@@ -35,15 +35,14 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
 
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
-        // TODO: After implementing the resolver for taxonomy, term_group and term_taxonomy change the type to ID
         $types = [
             'url' => SchemaDefinition::TYPE_URL,
             'endpoint' => SchemaDefinition::TYPE_URL,
             'name' => SchemaDefinition::TYPE_STRING,
             'slug' => SchemaDefinition::TYPE_STRING,
-            'term_group' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
-            'term_taxonomy_id' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
-            'taxonomy' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
+            // 'term_group' => SchemaDefinition::TYPE_ID,
+            // 'term_taxonomy_id' => SchemaDefinition::TYPE_ID,
+            // 'taxonomy' => SchemaDefinition::TYPE_ID,
             'description' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
             'count' => SchemaDefinition::TYPE_INT,
@@ -59,9 +58,9 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
             'endpoint' => $translationAPI->__('Tag endpoint', 'pop-taxonomies'),
             'name' => $translationAPI->__('Tag', 'pop-taxonomies'),
             'slug' => $translationAPI->__('Tag slug', 'pop-taxonomies'),
-            'term_group' => $translationAPI->__('TBD', 'pop-taxonomies'),
-            'term_taxonomy_id' => $translationAPI->__('TBD', 'pop-taxonomies'),
-            'taxonomy' => $translationAPI->__('TBD', 'pop-taxonomies'),
+            // 'term_group' => $translationAPI->__('TBD', 'pop-taxonomies'),
+            // 'term_taxonomy_id' => $translationAPI->__('TBD', 'pop-taxonomies'),
+            // 'taxonomy' => $translationAPI->__('TBD', 'pop-taxonomies'),
             'description' => $translationAPI->__('Tag description', 'pop-taxonomies'),
             'parent' => $translationAPI->__('Parent category (if this category is a child of another one)', 'pop-taxonomies'),
             'count' => $translationAPI->__('Number of posts containing this tag', 'pop-taxonomies'),
@@ -87,14 +86,14 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
             case 'slug':
                 return $cmstaxonomiesresolver->getTagSlug($tag);
 
-            case 'term_group':
-                return $cmstaxonomiesresolver->getTagTermGroup($tag);
+            // case 'term_group':
+            //     return $cmstaxonomiesresolver->getTagTermGroup($tag);
 
-            case 'term_taxonomy_id':
-                return $cmstaxonomiesresolver->getTagTermTaxonomyId($tag);
+            // case 'term_taxonomy_id':
+            //     return $cmstaxonomiesresolver->getTagTermTaxonomyId($tag);
 
-            case 'taxonomy':
-                return $cmstaxonomiesresolver->getTagTaxonomy($tag);
+            // case 'taxonomy':
+            //     return $cmstaxonomiesresolver->getTagTaxonomy($tag);
 
             case 'description':
                 return $cmstaxonomiesresolver->getTagDescription($tag);

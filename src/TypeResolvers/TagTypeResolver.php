@@ -27,7 +27,7 @@ class TagTypeResolver extends AbstractTypeResolver
     {
         $cmstaxonomiesresolver = \PoP\Taxonomies\ObjectPropertyResolverFactory::getInstance();
         $tag = $resultItem;
-        return $cmstaxonomiesresolver->getTagTermId($tag);
+        return $cmstaxonomiesresolver->getTagID($tag);
     }
 
     public function getTypeDataLoaderClass(): string
