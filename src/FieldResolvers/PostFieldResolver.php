@@ -23,8 +23,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     public static function getFieldNamesToResolve(): array
     {
         return [
-            'cats',
-            'cat',
+            'categories',
+            'mainCategory',
             'catName',
             'catSlugs',
             'tagNames',
@@ -33,10 +33,9 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
 
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
-        // TODO: After implementing the resolver for categories change the type to ID
         $types = [
-            'cats' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID/*SchemaDefinition::TYPE_UNRESOLVED_ID*/),
-            'cat' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
+            'categories' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'mainCategory' => SchemaDefinition::TYPE_ID,
             'catName' => SchemaDefinition::TYPE_STRING,
             'catSlugs' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
             'tagNames' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_STRING),
@@ -47,7 +46,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
     {
         $nonNullableFieldNames = [
-            'cats',
+            'categories',
             'catSlugs',
             'tagNames',
         ];
@@ -61,8 +60,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'cats' => $translationAPI->__('Categories to which this post was added', 'pop-taxonomies'),
-            'cat' => $translationAPI->__('Main category to which this post was added', 'pop-taxonomies'),
+            'categories' => $translationAPI->__('Categories to which this post was added', 'pop-taxonomies'),
+            'mainCategory' => $translationAPI->__('Main category to which this post was added', 'pop-taxonomies'),
             'catName' => $translationAPI->__('Name of the main category to which this post was added', 'pop-taxonomies'),
             'catSlugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-taxonomies'),
             'tagNames' => $translationAPI->__('Names of the tags added to this post', 'pop-taxonomies'),
@@ -75,18 +74,18 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         $taxonomyapi = \PoP\Taxonomies\FunctionAPIFactory::getInstance();
         $post = $resultItem;
         switch ($fieldName) {
-            case 'cats':
+            case 'categories':
                 return $taxonomyapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
 
-            case 'cat':
+            case 'mainCategory':
                 // Simply return the first category
-                if ($cats = $typeResolver->resolveValue($post, 'cats', $variables, $expressions, $options)) {
+                if ($cats = $typeResolver->resolveValue($post, 'categories', $variables, $expressions, $options)) {
                     return $cats[0];
                 }
                 return null;
 
             case 'catName':
-                if ($cat = $typeResolver->resolveValue($post, 'cat', $variables, $expressions, $options)) {
+                if ($cat = $typeResolver->resolveValue($post, 'mainCategory', $variables, $expressions, $options)) {
                     return $taxonomyapi->getCategoryName($cat);
                 }
                 return null;
