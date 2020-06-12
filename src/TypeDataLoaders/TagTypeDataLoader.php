@@ -49,7 +49,6 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQueryIds($query): array
     {
-
         // $query['fields'] = 'ids';
         $options = [
             'return-type' => POP_RETURNTYPE_IDS,
