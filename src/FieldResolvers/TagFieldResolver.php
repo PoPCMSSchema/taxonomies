@@ -63,7 +63,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
             // 'taxonomy' => $translationAPI->__('TBD', 'pop-taxonomies'),
             'description' => $translationAPI->__('Tag description', 'pop-taxonomies'),
             'parent' => $translationAPI->__('Parent category (if this category is a child of another one)', 'pop-taxonomies'),
-            'count' => $translationAPI->__('Number of posts containing this tag', 'pop-taxonomies'),
+            'count' => $translationAPI->__('Number of custom posts containing this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
