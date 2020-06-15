@@ -6,10 +6,10 @@ namespace PoP\Taxonomies\FieldResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Posts\FieldResolvers\AbstractPostFieldResolver;
+use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
 
-class PostTagFieldResolver extends AbstractPostFieldResolver
+class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
@@ -20,8 +20,8 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'posts' => $translationAPI->__('Posts which contain this tag', 'pop-taxonomies'),
-            'postCount' => $translationAPI->__('Number of posts which contain this tag', 'pop-taxonomies'),
+            'customPosts' => $translationAPI->__('Custom posts which contain this tag', 'pop-taxonomies'),
+            'customPostCount' => $translationAPI->__('Number of custom posts which contain this tag', 'pop-taxonomies'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class PostTagFieldResolver extends AbstractPostFieldResolver
 
         $tag = $resultItem;
         switch ($fieldName) {
-            case 'posts':
-            case 'postCount':
+            case 'customPosts':
+            case 'customPostCount':
                 $query['tag-ids'] = [$typeResolver->getID($tag)];
                 break;
         }

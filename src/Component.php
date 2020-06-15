@@ -21,7 +21,7 @@ class Component extends AbstractComponent
     public static function getDependedComponentClasses(): array
     {
         return [
-            \PoP\Posts\Component::class,
+            \PoP\CustomPosts\Component::class,
         ];
     }
 

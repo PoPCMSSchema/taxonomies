@@ -15,6 +15,8 @@ use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModulePr
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
+    public const HOOK_REST_FIELDS = __CLASS__ . ':RESTFields';
+
     private static $restFieldsQuery;
     private static $restFields;
     public static function getRESTFields(): array
@@ -30,9 +32,9 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     public static function getRESTFieldsQuery(): string
     {
         if (is_null(self::$restFieldsQuery)) {
-            $restFieldsQuery = 'id|name|count|url,posts.id|title|date|url';
+            $restFieldsQuery = 'id|name|count|url';
             self::$restFieldsQuery = (string) HooksAPIFacade::getInstance()->applyFilters(
-                'Tags:RESTFields',
+                self::HOOK_REST_FIELDS,
                 $restFieldsQuery
             );
         }
