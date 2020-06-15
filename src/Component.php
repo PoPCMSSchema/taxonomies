@@ -61,7 +61,7 @@ class Component extends AbstractComponent
         ServiceConfiguration::initialize();
 
         if (!in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)) {
-            \PoP\Taxonomies\Conditional\Content\ConditionalComponent::initialize(
+            \PoP\Taxonomies\Conditional\CustomPosts\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -82,8 +82,8 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // If $skipSchema for `Condition` is `true`, then services are not registered
-        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\Content\\FieldResolvers'))) {
-            \PoP\Taxonomies\Conditional\Content\ConditionalComponent::beforeBoot();
+        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\CustomPosts\\FieldResolvers'))) {
+            \PoP\Taxonomies\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
         }
     }
 }
