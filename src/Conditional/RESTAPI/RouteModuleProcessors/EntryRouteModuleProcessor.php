@@ -11,7 +11,8 @@ use PoP\API\Facades\FieldQueryConvertorFacade;
 use PoP\Routing\RouteNatures;
 use PoP\Taxonomies\Routing\RouteNatures as TaxonomyRouteNatures;
 use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
-use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
+
+// use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
@@ -88,26 +89,27 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
                 ],
             ];
         }
-        $routemodules = array(
-            POP_POSTS_ROUTE_POSTS => [
-                \PoP_Taxonomies_Module_Processor_FieldDataloads::class,
-                \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGPOSTLIST,
-                [
-                    'fields' => isset($vars['query']) ?
-                        $vars['query'] :
-                        EntryRouteModuleProcessorHelpers::getRESTFields()
-                    ]
-                ],
-        );
-        foreach ($routemodules as $route => $module) {
-            $ret[TaxonomyRouteNatures::TAG][$route][] = [
-                'module' => $module,
-                'conditions' => [
-                    'scheme' => POP_SCHEME_API,
-                    'datastructure' => RESTDataStructureFormatter::getName(),
-                ],
-            ];
-        }
+        // Commented until creating route POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS
+        // $routemodules = array(
+        //     POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS => [
+        //         \PoP_Taxonomies_Module_Processor_FieldDataloads::class,
+        //         \PoP_Taxonomies_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGPOSTLIST,
+        //         [
+        //             'fields' => isset($vars['query']) ?
+        //                 $vars['query'] :
+        //                 EntryRouteModuleProcessorHelpers::getRESTFields()
+        //             ]
+        //         ],
+        // );
+        // foreach ($routemodules as $route => $module) {
+        //     $ret[TaxonomyRouteNatures::TAG][$route][] = [
+        //         'module' => $module,
+        //         'conditions' => [
+        //             'scheme' => POP_SCHEME_API,
+        //             'datastructure' => RESTDataStructureFormatter::getName(),
+        //         ],
+        //     ];
+        // }
         return $ret;
     }
 }

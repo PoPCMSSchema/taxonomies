@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Taxonomies\Hooks\RESTFields;
+namespace PoP\Taxonomies\Conditional\CustomPosts\Conditional\RESTAPI\Hooks;
 
 use PoP\Engine\Hooks\AbstractHookSet;
 use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
