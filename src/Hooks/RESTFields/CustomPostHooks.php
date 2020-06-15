@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace PoP\Taxonomies\Hooks\RESTFields;
 
 use PoP\Engine\Hooks\AbstractHookSet;
+use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
 
-class PostHooks extends AbstractHookSet
+class CustomPostHooks extends AbstractHookSet
 {
     const TAG_RESTFIELDS = 'tags.id|name|url';
 
     protected function init()
     {
         $this->hooksAPI->addFilter(
-            'Posts:RESTFields',
+            EntryRouteModuleProcessorHelpers::HOOK_REST_FIELDS,
             [$this, 'getRESTFields']
         );
     }
