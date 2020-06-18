@@ -29,7 +29,6 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         return [
             'url',
-            'endpoint',
             'name',
             'slug',
             // 'term_group',
@@ -45,7 +44,6 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         $types = [
             'url' => SchemaDefinition::TYPE_URL,
-            'endpoint' => SchemaDefinition::TYPE_URL,
             'name' => SchemaDefinition::TYPE_STRING,
             'slug' => SchemaDefinition::TYPE_STRING,
             // 'term_group' => SchemaDefinition::TYPE_ID,
@@ -63,7 +61,6 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'url' => $translationAPI->__('Tag URL', 'pop-taxonomies'),
-            'endpoint' => $translationAPI->__('Tag endpoint', 'pop-taxonomies'),
             'name' => $translationAPI->__('Tag', 'pop-taxonomies'),
             'slug' => $translationAPI->__('Tag slug', 'pop-taxonomies'),
             // 'term_group' => $translationAPI->__('TBD', 'pop-taxonomies'),
@@ -84,9 +81,6 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
         switch ($fieldName) {
             case 'url':
                 return $taxonomyapi->getTagLink($typeResolver->getID($tag));
-
-            case 'endpoint':
-                return \PoP\API\APIUtils::getEndpoint($typeResolver->resolveValue($resultItem, 'url', $variables, $expressions, $options));
 
             case 'name':
                 return $cmstaxonomiesresolver->getTagName($tag);
