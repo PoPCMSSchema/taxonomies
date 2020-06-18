@@ -4,17 +4,25 @@ declare(strict_types=1);
 
 namespace PoP\Taxonomies\FieldResolvers;
 
-use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
-use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
-use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\Taxonomies\TypeResolvers\TagTypeResolver;
+use PoP\Translation\Facades\TranslationAPIFacade;
+use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
+use PoP\QueriedObject\FieldInterfaces\QueryableObjectFieldInterfaceResolver;
 
 class TagFieldResolver extends AbstractDBDataFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
         return array(TagTypeResolver::class);
+    }
+
+    public static function getImplementedInterfaceClasses(): array
+    {
+        return [
+            QueryableObjectFieldInterfaceResolver::class,
+        ];
     }
 
     public static function getFieldNamesToResolve(): array
