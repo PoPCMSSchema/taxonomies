@@ -1,8 +1,0 @@
-services:
-    PoP\Taxonomies\FieldResolvers\:
-        resource: '../src/FieldResolvers/*'
-        public: true
-
-    PoP\Taxonomies\TypeResolvers\:
-        resource: '../src/TypeResolvers/*'
-        public: true

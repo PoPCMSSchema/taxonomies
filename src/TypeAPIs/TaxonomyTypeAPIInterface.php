@@ -9,11 +9,5 @@ namespace PoP\Taxonomies\TypeAPIs;
  */
 interface TaxonomyTypeAPIInterface
 {
-    /**
-     * Indicates if the passed object is of type Tag
-     *
-     * @param [type] $object
-     * @return boolean
-     */
-    public function isInstanceOfTagType($object): bool;
+
 }
