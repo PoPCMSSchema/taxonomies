@@ -9,5 +9,11 @@ namespace PoP\Taxonomies\TypeAPIs;
  */
 interface TaxonomyTypeAPIInterface
 {
-
+    /**
+     * Retrieves the taxonomy name of the object ("post_tag", "category", etc)
+     *
+     * @param [type] $object
+     * @return string
+     */
+    public function getTaxonomyName($taxonomyObjectOrID): string;
 }
