@@ -15,5 +15,5 @@ interface TaxonomyTypeAPIInterface
      * @param [type] $object
      * @return string
      */
-    public function getTaxonomyName($taxonomyObjectOrID): string;
+    public function getTermTaxonomyName($termObjectOrID): string;
 }
