@@ -17,7 +17,7 @@ Adds support for taxonomies
 Via Composer
 
 ``` bash
-composer require getpop/taxonomies
+composer require pop-schema/taxonomies
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ Initialize the component:
 
 ``` php
 \PoP\Root\ComponentLoader::initializeComponents([
-    \PoP\Taxonomies\Component::class,
+    \PoPSchema\Taxonomies\Component::class,
 ]);
 ```
 
@@ -75,17 +75,17 @@ If you discover any security related issues, please email leo@getpop.org instead
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/getpop/taxonomies.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/pop-schema/taxonomies.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/getpop/taxonomies/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/getpop/taxonomies.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/getpop/taxonomies.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/getpop/taxonomies.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/pop-schema/taxonomies/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/pop-schema/taxonomies.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/pop-schema/taxonomies.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/pop-schema/taxonomies.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/getpop/taxonomies
-[link-travis]: https://travis-ci.org/getpop/taxonomies
-[link-scrutinizer]: https://scrutinizer-ci.com/g/getpop/taxonomies/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/getpop/taxonomies
-[link-downloads]: https://packagist.org/packages/getpop/taxonomies
+[link-packagist]: https://packagist.org/packages/pop-schema/taxonomies
+[link-travis]: https://travis-ci.org/pop-schema/taxonomies
+[link-scrutinizer]: https://scrutinizer-ci.com/g/pop-schema/taxonomies/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/pop-schema/taxonomies
+[link-downloads]: https://packagist.org/packages/pop-schema/taxonomies
 [link-author]: https://github.com/leoloso
 [link-contributors]: ../../contributors

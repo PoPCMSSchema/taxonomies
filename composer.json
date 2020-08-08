@@ -1,5 +1,5 @@
 {
-    "name": "getpop/taxonomies",
+    "name": "pop-schema/taxonomies",
     "type": "library",
     "description": "Adds support for taxonomies",
     "keywords": [
@@ -19,8 +19,8 @@
     "prefer-stable": true,
     "require": {
         "php": "~7.2",
-        "getpop/customposts": "dev-master",
-        "getpop/migrate-taxonomies": "dev-master"
+        "pop-schema/customposts": "dev-master",
+        "pop-schema/migrate-taxonomies": "dev-master"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12",
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PoP\\Taxonomies\\": "src"
+            "PoPSchema\\Taxonomies\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\Taxonomies\\": "tests"
+            "PoPSchema\\Taxonomies\\": "tests"
         }
     },
     "scripts": {

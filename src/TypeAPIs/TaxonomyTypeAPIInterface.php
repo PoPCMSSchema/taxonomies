@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Taxonomies\TypeAPIs;
+namespace PoPSchema\Taxonomies\TypeAPIs;
 
 /**
  * Methods to interact with the Type, to be implemented by the underlying CMS

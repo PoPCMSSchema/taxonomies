@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Taxonomies\Facades;
+namespace PoPSchema\Taxonomies\Facades;
 
-use PoP\Taxonomies\TypeAPIs\TaxonomyTypeAPIInterface;
+use PoPSchema\Taxonomies\TypeAPIs\TaxonomyTypeAPIInterface;
 use PoP\Root\Container\ContainerBuilderFactory;
 
 class TaxonomyTypeAPIFacade
