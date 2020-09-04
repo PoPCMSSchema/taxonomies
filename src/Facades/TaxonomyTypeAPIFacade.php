@@ -11,6 +11,10 @@ class TaxonomyTypeAPIFacade
 {
     public static function getInstance(): TaxonomyTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('taxonomy_type_api');
+        /**
+         * @var TaxonomyTypeAPIInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('taxonomy_type_api');
+        return $service;
     }
 }
