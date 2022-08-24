@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Taxonomies\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\FilterInputs\FilterInputInterface;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractOneofQueryableInputObjectTypeResolver;
 use PoP\ComponentModel\TypeResolvers\ScalarType\IDScalarTypeResolver;
@@ -24,6 +25,7 @@ abstract class AbstractTaxonomyByInputObjectTypeResolver extends AbstractOneofQu
     }
     final protected function getIDScalarTypeResolver(): IDScalarTypeResolver
     {
+        /** @var IDScalarTypeResolver */
         return $this->idScalarTypeResolver ??= $this->instanceManager->getInstance(IDScalarTypeResolver::class);
     }
     final public function setStringScalarTypeResolver(StringScalarTypeResolver $stringScalarTypeResolver): void
@@ -32,6 +34,7 @@ abstract class AbstractTaxonomyByInputObjectTypeResolver extends AbstractOneofQu
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setIncludeFilterInput(IncludeFilterInput $includeFilterInput): void
@@ -40,6 +43,7 @@ abstract class AbstractTaxonomyByInputObjectTypeResolver extends AbstractOneofQu
     }
     final protected function getIncludeFilterInput(): IncludeFilterInput
     {
+        /** @var IncludeFilterInput */
         return $this->includeFilterInput ??= $this->instanceManager->getInstance(IncludeFilterInput::class);
     }
     final public function setSlugFilterInput(SlugFilterInput $slugFilterInput): void
@@ -48,6 +52,7 @@ abstract class AbstractTaxonomyByInputObjectTypeResolver extends AbstractOneofQu
     }
     final protected function getSlugFilterInput(): SlugFilterInput
     {
+        /** @var SlugFilterInput */
         return $this->slugFilterInput ??= $this->instanceManager->getInstance(SlugFilterInput::class);
     }
 
@@ -64,6 +69,9 @@ abstract class AbstractTaxonomyByInputObjectTypeResolver extends AbstractOneofQu
         return $this->__('a taxonomy', 'customposts');
     }
 
+    /**
+     * @return array<string, InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [

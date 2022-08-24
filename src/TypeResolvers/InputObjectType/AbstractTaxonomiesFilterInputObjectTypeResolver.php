@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Taxonomies\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\FilterInputs\FilterInputInterface;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\ScalarType\StringScalarTypeResolver;
@@ -25,6 +26,7 @@ abstract class AbstractTaxonomiesFilterInputObjectTypeResolver extends AbstractO
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setParentIDFilterInput(ParentIDFilterInput $parentIDFilterInput): void
@@ -33,6 +35,7 @@ abstract class AbstractTaxonomiesFilterInputObjectTypeResolver extends AbstractO
     }
     final protected function getParentIDFilterInput(): ParentIDFilterInput
     {
+        /** @var ParentIDFilterInput */
         return $this->parentIDFilterInput ??= $this->instanceManager->getInstance(ParentIDFilterInput::class);
     }
     final public function setSearchFilterInput(SearchFilterInput $searchFilterInput): void
@@ -41,6 +44,7 @@ abstract class AbstractTaxonomiesFilterInputObjectTypeResolver extends AbstractO
     }
     final protected function getSearchFilterInput(): SearchFilterInput
     {
+        /** @var SearchFilterInput */
         return $this->searchFilterInput ??= $this->instanceManager->getInstance(SearchFilterInput::class);
     }
     final public function setSlugsFilterInput(SlugsFilterInput $slugsFilterInput): void
@@ -49,11 +53,15 @@ abstract class AbstractTaxonomiesFilterInputObjectTypeResolver extends AbstractO
     }
     final protected function getSlugsFilterInput(): SlugsFilterInput
     {
+        /** @var SlugsFilterInput */
         return $this->slugsFilterInput ??= $this->instanceManager->getInstance(SlugsFilterInput::class);
     }
 
     abstract protected function addParentIDInputField(): bool;
 
+    /**
+     * @return array<string, InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return array_merge(

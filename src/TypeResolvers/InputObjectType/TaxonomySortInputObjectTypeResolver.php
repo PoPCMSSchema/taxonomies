@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Taxonomies\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoPCMSSchema\Taxonomies\Constants\TaxonomyOrderBy;
 use PoPCMSSchema\Taxonomies\TypeResolvers\EnumType\TaxonomyOrderByEnumTypeResolver;
 use PoPCMSSchema\SchemaCommons\TypeResolvers\InputObjectType\SortInputObjectTypeResolver;
@@ -18,6 +19,7 @@ class TaxonomySortInputObjectTypeResolver extends SortInputObjectTypeResolver
     }
     final protected function getTaxonomyOrderByEnumTypeResolver(): TaxonomyOrderByEnumTypeResolver
     {
+        /** @var TaxonomyOrderByEnumTypeResolver */
         return $this->taxonomySortByEnumTypeResolver ??= $this->instanceManager->getInstance(TaxonomyOrderByEnumTypeResolver::class);
     }
 
@@ -26,6 +28,9 @@ class TaxonomySortInputObjectTypeResolver extends SortInputObjectTypeResolver
         return 'TaxonomySortInput';
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return array_merge(
